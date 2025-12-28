@@ -6,6 +6,9 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.cluster import KMeans
 from datetime import datetime
 from typing import Dict, List, Tuple
+import matplotlib.pyplot as plt
+import seaborn as sns
+from pathlib import Path
 
 
 class LearningPathAnalyzer:
@@ -17,6 +20,14 @@ class LearningPathAnalyzer:
         self.activity_stats = {}
         self.student_profiles = {}
         self.recommendations = {}
+        
+        # Ensure reports directory exists
+        Path('reports').mkdir(exist_ok=True)
+        
+        # Set up matplotlib style
+        sns.set_style("whitegrid")
+        plt.rcParams['figure.figsize'] = (12, 6)
+        plt.rcParams['font.size'] = 10
 
     def load_data(self, filepath: str) -> pd.DataFrame:
         """Load LMS logs from CSV file.
@@ -211,3 +222,140 @@ class LearningPathAnalyzer:
             key=lambda x: x[1]['average_grade']
         )[:n]
         return [(sid, p['average_grade']) for sid, p in sorted_students]
+
+    def visualize_activity_distribution(self) -> str:
+        """Create histogram of activity distribution.
+
+        Returns:
+            Path to saved visualization
+        """
+        if not self.activity_stats:
+            self.analyze_activity_patterns()
+
+        activities = list(self.activity_stats.keys())
+        counts = [self.activity_stats[a]['count'] for a in activities]
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+        bars = ax.bar(activities, counts, color='steelblue', edgecolor='navy', alpha=0.7)
+        
+        # Add value labels on bars
+        for bar in bars:
+            height = bar.get_height()
+            ax.text(bar.get_x() + bar.get_width()/2., height,
+                   f'{int(height)}',
+                   ha='center', va='bottom', fontweight='bold')
+        
+        ax.set_xlabel('Activity Type', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Number of Activities', fontsize=12, fontweight='bold')
+        ax.set_title('Distribution of Learning Activities', fontsize=14, fontweight='bold')
+        ax.grid(axis='y', alpha=0.3)
+        
+        plt.xticks(rotation=45, ha='right')
+        plt.tight_layout()
+        
+        filepath = 'reports/activity_distribution.png'
+        plt.savefig(filepath, dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        return filepath
+
+    def visualize_average_grades(self) -> str:
+        """Create bar chart of average grades by activity type.
+
+        Returns:
+            Path to saved visualization
+        """
+        if not self.activity_stats:
+            self.analyze_activity_patterns()
+
+        activities = list(self.activity_stats.keys())
+        grades = [self.activity_stats[a]['avg_grade'] for a in activities]
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+        bars = ax.bar(activities, grades, color='mediumseagreen', edgecolor='darkgreen', alpha=0.7)
+        
+        # Add value labels on bars
+        for bar in bars:
+            height = bar.get_height()
+            ax.text(bar.get_x() + bar.get_width()/2., height,
+                   f'{height:.1f}',
+                   ha='center', va='bottom', fontweight='bold')
+        
+        # Add a horizontal line for class average
+        class_avg = self.df['grade'].mean()
+        ax.axhline(y=class_avg, color='red', linestyle='--', linewidth=2, 
+                   label=f'Class Average: {class_avg:.1f}')
+        
+        ax.set_xlabel('Activity Type', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Average Grade', fontsize=12, fontweight='bold')
+        ax.set_title('Average Grade by Activity Type', fontsize=14, fontweight='bold')
+        ax.set_ylim(0, 100)
+        ax.grid(axis='y', alpha=0.3)
+        ax.legend(loc='upper right')
+        
+        plt.xticks(rotation=45, ha='right')
+        plt.tight_layout()
+        
+        filepath = 'reports/average_grades.png'
+        plt.savefig(filepath, dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        return filepath
+
+    def visualize_engagement_distribution(self) -> str:
+        """Create pie chart of student engagement levels.
+
+        Returns:
+            Path to saved visualization
+        """
+        if not self.student_profiles:
+            self.profile_students()
+
+        engagement_counts = {'high': 0, 'medium': 0, 'low': 0}
+        for profile in self.student_profiles.values():
+            level = profile['engagement_level']
+            engagement_counts[level] += 1
+
+        levels = list(engagement_counts.keys())
+        counts = list(engagement_counts.values())
+        colors = {'high': '#2ecc71', 'medium': '#f39c12', 'low': '#e74c3c'}
+        color_list = [colors[level] for level in levels]
+
+        fig, ax = plt.subplots(figsize=(10, 8))
+        wedges, texts, autotexts = ax.pie(counts, labels=levels, autopct='%1.1f%%',
+                                           colors=color_list, startangle=90,
+                                           textprops={'fontsize': 12, 'fontweight': 'bold'})
+        
+        # Enhance the percentage text
+        for autotext in autotexts:
+            autotext.set_color('white')
+            autotext.set_fontsize(11)
+            autotext.set_fontweight('bold')
+        
+        # Add count labels
+        legend_labels = [f'{level.capitalize()}: {counts[i]} students' 
+                        for i, level in enumerate(levels)]
+        ax.legend(legend_labels, loc='upper left', bbox_to_anchor=(0.85, 1))
+        
+        ax.set_title('Student Engagement Distribution', fontsize=14, fontweight='bold')
+        
+        plt.tight_layout()
+        
+        filepath = 'reports/engagement_distribution.png'
+        plt.savefig(filepath, dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        return filepath
+
+    def generate_all_visualizations(self) -> Dict[str, str]:
+        """Generate all visualizations.
+
+        Returns:
+            Dictionary with visualization file paths
+        """
+        visualizations = {
+            'activity_distribution': self.visualize_activity_distribution(),
+            'average_grades': self.visualize_average_grades(),
+            'engagement_distribution': self.visualize_engagement_distribution()
+        }
+        return visualizations
