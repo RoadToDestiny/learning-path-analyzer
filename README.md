@@ -1,6 +1,6 @@
 # Learning Path Analyzer (Анализатор пути обучения)
 
-[![Тесты и качество кода](https://github.com/RoadToDestiny/learning-path-analyzer/workflows/Tests%2
+![Tests and Code Quality](https://github.com/RoadToDestiny/learning-path-analyzer/actions/workflows/tests.yml)
 
 ## Описание
 
@@ -407,11 +407,3 @@ MIT License - См. файл LICENSE для подробностей
 ***
 
 **Удачного анализа! 🎓📊**
-
-[1](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/4e7deb03-36f0-49c1-8294-031e195909c1/quick-start.md)
-[2](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/5c1ae608-29dc-4101-b5d6-a1033fb7005f/student-guide.md)
-[3](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/b59d061f-401a-45bc-9239-bd46157a8ec3/evaluation-matrix.md)
-[4](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/6a899256-283d-43d1-bc9d-98f6525e69db/project-ideas.md)
-[5](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/30982fc6-ff41-4d59-9f72-6eaf86704316/rubric-15-points.md)
-[6](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/7dd55376-6c55-4d86-b657-4aed7510a8d4/llm-checker-guide.md)
-[7](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/df16dc5a-d2a7-43e6-ad67-b7f4d4a19807/README-package.md)
