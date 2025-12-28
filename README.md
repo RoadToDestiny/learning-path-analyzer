@@ -226,6 +226,9 @@ black>=22.0.0          # Форматирование кода
 - Цвет - steelblue
 - Включены подписи значений
 
+**Пример:**
+![Distribution of Learning Activities](https://raw.githubusercontent.com/RoadToDestiny/learning-path-analyzer/main/reports/activity_distribution_example.png)
+
 **Использование:**
 ```python
 filepaths = analyzer.visualize_activity_distribution()
