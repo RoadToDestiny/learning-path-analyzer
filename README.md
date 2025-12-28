@@ -1,6 +1,6 @@
 # Learning Path Analyzer (Анализатор пути обучения)
 
-# Автор: RoadToDestiny (Титов Артём Витальевич РИ-150912)
+### Автор: RoadToDestiny (Титов Артём Витальевич РИ-150912)
 
 [![Tests and Code Quality](https://github.com/RoadToDestiny/learning-path-analyzer/actions/workflows/tests.yml/badge.svg)](https://github.com/RoadToDestiny/learning-path-analyzer/actions/workflows/tests.yml)
 
