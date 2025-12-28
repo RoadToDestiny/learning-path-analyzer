@@ -235,7 +235,7 @@ filepaths = analyzer.visualize_activity_distribution()
 ```
 
 ### 2. График средних оценок по типам активности
-**Файл:** `reports/average_grades.png`
+**Файл:** `reports/average_grades.jpg`
 
 Показывает среднюю оценку для каждого типа активности:
 - Красная пунктирная линия - средняя оценка класса
@@ -246,9 +246,11 @@ filepaths = analyzer.visualize_activity_distribution()
 ```python
 filepaths = analyzer.visualize_average_grades()
 ```
+**Пример:**
+![Distribution of average_grades](https://github.com/RoadToDestiny/learning-path-analyzer/blob/main/reports/average_grades.jpg?raw=true)
 
 ### 3. Круговая диаграмма вовлеченности
-**Файл:** `reports/engagement_distribution.png`
+**Файл:** `reports/engagement_distribution.jpg`
 
 Показывает распределение студентов по уровням вовлеченности:
 - 🟢 **Высокий** (High) - зеленый
@@ -260,6 +262,8 @@ filepaths = analyzer.visualize_average_grades()
 ```python
 filepaths = analyzer.visualize_engagement_distribution()
 ```
+**Пример:**
+![Distribution of engagement_distribution](https://github.com/RoadToDestiny/learning-path-analyzer/blob/main/reports/engagement_distribution.jpg?raw=true)
 
 ### Генерация всех визуализаций сразу
 
