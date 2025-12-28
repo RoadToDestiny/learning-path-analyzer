@@ -219,7 +219,7 @@ black>=22.0.0          # Форматирование кода
 ## Визуализация результатов
 
 ### 1. Гистограмма распределения активностей
-**Файл:** `reports/activity_distribution.png`
+**Файл:** `report/activity_distribution.jpg`
 
 Показывает количество каждого типа активности:
 - Высоты столбцов - количество действий
@@ -227,7 +227,7 @@ black>=22.0.0          # Форматирование кода
 - Включены подписи значений
 
 **Пример:**
-![Distribution of Learning Activities](https://raw.githubusercontent.com/RoadToDestiny/learning-path-analyzer/main/reports/activity_distribution_example.png)
+![Distribution of Learning Activities](https://github.com/RoadToDestiny/learning-path-analyzer/blob/main/reports/activity_distribution.jpg?raw=true)
 
 **Использование:**
 ```python
