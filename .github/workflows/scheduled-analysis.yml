@@ -34,21 +34,40 @@ jobs:
       id: timestamp
       run: echo "time=$(date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_OUTPUT
     
+    - name: Verify generated files
+      run: |
+        echo "=== Generated Files ==="
+        ls -lah reports/
+        echo ""
+        echo "=== File Sizes ==="
+        du -h reports/*
+    
     - name: Prepare reports for commit
       run: |
         if [ -f reports/analysis_report.json ]; then
-          echo "Analysis report generated successfully"
-          ls -la reports/
+          echo "✓ Analysis report generated successfully"
+        fi
+        if [ -f reports/recommendations.txt ]; then
+          echo "✓ Recommendations generated successfully"
+        fi
+        if [ -f reports/activity_distribution.png ]; then
+          echo "✓ Activity distribution visualization generated"
+        fi
+        if [ -f reports/average_grades.png ]; then
+          echo "✓ Average grades visualization generated"
+        fi
+        if [ -f reports/engagement_distribution.png ]; then
+          echo "✓ Engagement distribution visualization generated"
         fi
     
-    - name: Commit analysis reports
+    - name: Commit analysis reports and visualizations
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         
         if [ -n "$(git status --porcelain reports/)" ]; then
           git add reports/
-          git commit -m "Automated analysis report - ${{ steps.timestamp.outputs.time }}"
+          git commit -m "Automated analysis report & visualizations - ${{ steps.timestamp.outputs.time }}"
           git push
         else
           echo "No changes in reports"
@@ -66,8 +85,15 @@ jobs:
       run: |
         echo "=== Learning Path Analysis Complete ==="
         echo "Analysis timestamp: ${{ steps.timestamp.outputs.time }}"
+        echo ""
+        echo "Generated artifacts:"
+        echo "  📊 reports/analysis_report.json (analysis data)"
+        echo "  📝 reports/recommendations.txt (student recommendations)"
+        echo "  📈 reports/activity_distribution.png (activity histogram)"
+        echo "  📊 reports/average_grades.png (grades by activity)"
+        echo "  🎯 reports/engagement_distribution.png (engagement pie chart)"
+        echo ""
         if [ -f reports/recommendations.txt ]; then
-          echo ""
           echo "Sample recommendations:"
-          head -20 reports/recommendations.txt
+          head -15 reports/recommendations.txt | sed 's/^/  /'
         fi
