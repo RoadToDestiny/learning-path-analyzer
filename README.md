@@ -1,94 +1,94 @@
-# Learning Path Analyzer
+# Learning Path Analyzer (Анализатор пути обучения)
 
-[![Tests and Code Quality](https://github.com/RoadToDestiny/learning-path-analyzer/workflows/Tests%20and%20Code%20Quality/badge.svg)](https://github.com/RoadToDestiny/learning-path-analyzer/actions/workflows/tests.yml)
+[![Тесты и качество кода](https://github.com/RoadToDestiny/learning-path-analyzer/workflows/Tests%2
 
-## Description
+## Описание
 
-**Learning Path Analyzer** is an educational analytics tool that analyzes student learning paths based on Learning Management System (LMS) activity logs. The system identifies effective learning patterns, profiles students, and generates personalized recommendations for optimizing their educational journey.
+**Learning Path Analyzer** — это инструмент образовательной аналитики, который анализирует пути обучения студентов на основе логов активности системы управления обучением (LMS). Система выявляет эффективные паттерны обучения, профилирует студентов и генерирует персонализированные рекомендации для оптимизации их образовательного пути.
 
-### Key Features
+### Ключевые возможности
 
-- 📊 **Activity Pattern Analysis**: Identifies which learning activities are most effective for academic success
-- 👥 **Student Profiling**: Creates detailed learning profiles including engagement levels and activity preferences
-- 💡 **Smart Recommendations**: Generates personalized recommendations for each student based on their learning patterns
-- 📈 **Performance Analytics**: Tracks top performers and identifies students who need support
-- 🔄 **Automated Reporting**: Generates daily analysis reports with actionable insights
+- 📊 **Анализ паттернов активности**: Определяет, какие виды учебной деятельности наиболее эффективны для академического успеха.
+- 👥 **Профилирование студентов**: Создает детальные профили обучения, включая уровни вовлеченности и предпочтения в видах деятельности.
+- 💡 **Умные рекомендации**: Генерирует персонализированные рекомендации для каждого студента на основе его паттернов обучения.
+- 📈 **Аналитика успеваемости**: Отслеживает лучших студентов и выявляет тех, кому нужна поддержка.
+- 🔄 **Автоматическая отчетность**: Генерирует ежедневные аналитические отчеты с практическими выводами.
 
-### Practical Applications
+### Практическое применение
 
-- **Educational Institutions**: Monitor course effectiveness and student engagement
-- **LMS Administrators**: Identify bottlenecks in learning pathways
-- **Instructors**: Get data-driven insights to improve course design
-- **Students**: Receive personalized recommendations to improve learning outcomes
+- **Образовательные учреждения**: Мониторинг эффективности курсов и вовлеченности студентов.
+- **Администраторы LMS**: Выявление «узких мест» в учебных программах.
+- **Преподаватели**: Получение данных для улучшения структуры курса.
+- **Студенты**: Получение персональных рекомендаций для улучшения результатов обучения.
 
----
+***
 
-## Installation
+## Установка
 
-### Prerequisites
+### Предварительные требования
 
-- Python 3.8 or higher
-- pip (Python package manager)
+- Python 3.8 или выше
+- pip (менеджер пакетов Python)
 - Git
 
-### Setup
+### Настройка
 
 ```bash
-# Clone the repository
+# Клонирование репозитория
 git clone https://github.com/RoadToDestiny/learning-path-analyzer.git
 cd learning-path-analyzer
 
-# Create a virtual environment (optional but recommended)
+# Создание виртуального окружения (опционально, но рекомендуется)
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # Для Windows: venv\Scripts\activate
 
-# Install dependencies
+# Установка зависимостей
 pip install -r requirements.txt
 ```
 
----
+***
 
-## Usage
+## Использование
 
-### Basic Example
+### Базовый пример
 
 ```python
 from src.analyzer import LearningPathAnalyzer
 from src.utils import load_lms_logs, save_report
 
-# Initialize analyzer
+# Инициализация анализатора
 analyzer = LearningPathAnalyzer()
 
-# Load LMS logs from CSV file
+# Загрузка логов LMS из CSV файла
 data = analyzer.load_data('data/lms_logs.csv')
 
-# Analyze activity patterns
+# Анализ паттернов активности
 activity_stats = analyzer.analyze_activity_patterns()
 print(activity_stats)
 
-# Profile students
+# Профилирование студентов
 student_profiles = analyzer.profile_students()
 
-# Generate recommendations
+# Генерация рекомендаций
 recommendations = analyzer.generate_recommendations()
 
-# Get summary report
+# Получение итогового отчета
 report = analyzer.get_summary_report()
 save_report(report, 'reports/analysis_report.json')
 ```
 
-### Running the Main Script
+### Запуск основного скрипта
 
 ```bash
-# Run analysis on sample data
+# Запуск анализа на демонстрационных данных
 python src/main.py
 
-# Output:
-# - Analysis report: reports/analysis_report.json
-# - Recommendations: reports/recommendations.txt
+# Результат:
+# - Отчет об анализе: reports/analysis_report.json
+# - Рекомендации: reports/recommendations.txt
 ```
 
-### Command Line Usage Example
+### Пример использования в командной строке
 
 ```bash
 $ python src/main.py
@@ -138,38 +138,38 @@ Recommendations saved to reports/recommendations.txt
 Analysis complete!
 ```
 
----
+***
 
-## Project Structure
+## Структура проекта
 
 ```
 learning-path-analyzer/
-├── src/                           # Source code
-│   ├── __init__.py               # Package initialization
-│   ├── analyzer.py               # Main analyzer class (230 lines)
-│   ├── utils.py                  # Utility functions (140 lines)
-│   └── main.py                   # Entry point (120 lines)
-├── tests/                         # Unit tests
-│   ├── __init__.py               # Test package initialization
-│   └── test_analyzer.py          # Comprehensive test suite (180 lines, 10 tests)
-├── data/                          # Data directory
-│   └── sample_lms_data.csv       # Sample LMS activity logs
-├── reports/                       # Generated reports (created at runtime)
-│   ├── analysis_report.json      # JSON format analysis results
-│   └── recommendations.txt       # Text format recommendations
-├── .github/workflows/            # CI/CD configuration
-│   ├── tests.yml                 # Standard test workflow
-│   └── scheduled-analysis.yml    # Scheduled analysis workflow
-├── requirements.txt              # Project dependencies
-├── .gitignore                    # Git ignore rules
-└── README.md                     # This file
+├── src/                           # Исходный код
+│   ├── __init__.py               # Инициализация пакета
+│   ├── analyzer.py               # Главный класс анализатора (230 строк)
+│   ├── utils.py                  # Утилиты (140 строк)
+│   └── main.py                   # Точка входа (120 строк)
+├── tests/                         # Юнит-тесты
+│   ├── __init__.py               # Инициализация пакета тестов
+│   └── test_analyzer.py          # Полный набор тестов (180 строк, 10 тестов)
+├── data/                          # Директория с данными
+│   └── sample_lms_data.csv       # Пример логов активности LMS
+├── reports/                       # Сгенерированные отчеты (создаются при запуске)
+│   ├── analysis_report.json      # Результаты анализа в формате JSON
+│   └── recommendations.txt       # Рекомендации в текстовом формате
+├── .github/workflows/            # Конфигурация CI/CD
+│   ├── tests.yml                 # Стандартный workflow тестирования
+│   └── scheduled-analysis.yml    # Workflow запланированного анализа
+├── requirements.txt              # Зависимости проекта
+├── .gitignore                    # Правила игнорирования Git
+└── README.md                     # Этот файл
 ```
 
----
+***
 
-## CSV Data Format
+## Формат данных CSV
 
-The analyzer expects LMS logs in CSV format with the following columns:
+Анализатор ожидает логи LMS в формате CSV со следующими столбцами:
 
 ```csv
 student_id,activity_type,timestamp,grade
@@ -178,107 +178,107 @@ STU001,assignment,2024-01-02,90.0
 STU002,forum_post,2024-01-01,78.0
 ```
 
-### Column Descriptions
+### Описание столбцов
 
-- **student_id**: Unique student identifier (e.g., "STU001")
-- **activity_type**: Type of learning activity (quiz, assignment, forum_post, video_watch, reading)
-- **timestamp**: Date and time of activity (ISO 8601 format: YYYY-MM-DD)
-- **grade**: Numeric grade or score (0-100)
+- **student_id**: Уникальный идентификатор студента (например, "STU001")
+- **activity_type**: Тип учебной деятельности (quiz, assignment, forum_post, video_watch, reading)
+- **timestamp**: Дата и время активности (формат ISO 8601: YYYY-MM-DD)
+- **grade**: Числовая оценка или балл (0-100)
 
----
+***
 
-## Requirements
+## Требования
 
 ```
-numpy>=1.20.0          # Numerical computations
-pandas>=1.3.0         # Data manipulation and analysis
-scikit-learn>=1.0.0   # Machine learning utilities
-matplotlib>=3.4.0     # Plotting (optional)
-seaborn>=0.11.0       # Statistical visualization (optional)
-plotly>=5.0.0         # Interactive visualizations (optional)
-pytest>=7.0.0         # Testing framework
-pytest-cov>=3.0.0     # Code coverage
-flake8>=4.0.0         # Code linting
-black>=22.0.0         # Code formatting
+numpy>=1.20.0          # Числовые вычисления
+pandas>=1.3.0          # Обработка и анализ данных
+scikit-learn>=1.0.0    # Утилиты машинного обучения
+matplotlib>=3.4.0      # Построение графиков (опционально)
+seaborn>=0.11.0        # Статистическая визуализация (опционально)
+plotly>=5.0.0          # Интерактивные визуализации (опционально)
+pytest>=7.0.0          # Фреймворк для тестирования
+pytest-cov>=3.0.0      # Покрытие кода тестами
+flake8>=4.0.0          # Линтинг кода
+black>=22.0.0          # Форматирование кода
 ```
 
----
+***
 
-## Testing
+## Тестирование
 
-### Run All Tests
+### Запуск всех тестов
 
 ```bash
 pytest
 ```
 
-### Run Tests with Coverage Report
+### Запуск тестов с отчетом о покрытии
 
 ```bash
 pytest --cov=src --cov-report=html
 ```
 
-### Run Specific Test File
+### Запуск конкретного файла тестов
 
 ```bash
 pytest tests/test_analyzer.py -v
 ```
 
-### Test Coverage
+### Покрытие тестами
 
-The test suite includes:
-- ✅ Analyzer initialization tests
-- ✅ Data loading and validation tests
-- ✅ Activity pattern analysis tests
-- ✅ Student profiling tests
-- ✅ Recommendation generation tests
-- ✅ Report generation tests
-- ✅ Utility function tests
-- ✅ Error handling tests
-- ✅ Edge case tests
-- ✅ Integration tests
+Набор тестов включает:
+- ✅ Тесты инициализации анализатора
+- ✅ Тесты загрузки и валидации данных
+- ✅ Тесты анализа паттернов активности
+- ✅ Тесты профилирования студентов
+- ✅ Тесты генерации рекомендаций
+- ✅ Тесты генерации отчетов
+- ✅ Тесты утилит
+- ✅ Тесты обработки ошибок
+- ✅ Тесты граничных случаев
+- ✅ Интеграционные тесты
 
----
+***
 
 ## CI/CD Workflows
 
-This project includes two GitHub Actions workflows:
+Этот проект включает два workflow GitHub Actions:
 
-### 1. Tests and Code Quality (`tests.yml`)
+### 1. Тесты и качество кода (`tests.yml`)
 
-**Triggers**: On push to main/develop and pull requests
+**Триггеры**: При пуше в ветки main/develop и при создании pull request
 
-**Jobs**:
-- 🧪 Runs unit tests on Python 3.8, 3.9, 3.10
-- 📝 Linting with flake8
-- 🎨 Code formatting check with black
-- 📊 Coverage reporting to Codecov
-- ✅ Sample data analysis validation
+**Задачи (Jobs)**:
+- 🧪 Запуск юнит-тестов на Python 3.8, 3.9, 3.10
+- 📝 Линтинг с помощью flake8
+- 🎨 Проверка форматирования кода с помощью black
+- 📊 Отправка отчета о покрытии в Codecov
+- ✅ Валидация анализа на тестовых данных
 
-### 2. Scheduled Analysis Report (`scheduled-analysis.yml`)
+### 2. Отчет запланированного анализа (`scheduled-analysis.yml`)
 
-**Triggers**: 
-- 📅 Daily at 2 AM UTC (cron schedule)
-- 🎛️ Manual trigger via workflow_dispatch
+**Триггеры**:
+- 📅 Ежедневно в 2:00 UTC (расписание cron)
+- 🎛️ Ручной запуск через workflow_dispatch
 
-**Jobs**:
-- 🔍 Runs learning path analysis
-- 💾 Auto-commits reports to repository
-- 📦 Uploads reports as artifacts (30-day retention)
-- 📊 Generates automated daily insights
+**Задачи (Jobs)**:
+- 🔍 Запуск анализа пути обучения
+- 💾 Автоматический коммит отчетов в репозиторий
+- 📦 Загрузка отчетов как артефактов (хранение 30 дней)
+- 📊 Генерация автоматических ежедневных инсайтов
 
-**This demonstrates**:
-- ✅ Schedule-based automation (cron)
-- ✅ Workflow dispatch for manual triggering
-- ✅ Artifact upload and retention policies
-- ✅ Git operations within workflows
-- ✅ Automated reporting system
+**Это демонстрирует**:
+- ✅ Автоматизацию по расписанию (cron)
+- ✅ Ручной запуск workflow
+- ✅ Политики загрузки и хранения артефактов
+- ✅ Операции Git внутри workflow
+- ✅ Систему автоматической отчетности
 
----
+***
 
-## Analysis Output Examples
+## Примеры результатов анализа
 
-### Summary Report (analysis_report.json)
+### Итоговый отчет (analysis_report.json)
 
 ```json
 {
@@ -303,7 +303,7 @@ This project includes two GitHub Actions workflows:
 }
 ```
 
-### Student Profile Example
+### Пример профиля студента
 
 ```json
 {
@@ -318,92 +318,100 @@ This project includes two GitHub Actions workflows:
 }
 ```
 
----
+***
 
-## Key Features in Detail
+## Детальное описание ключевых функций
 
-### 1. Activity Pattern Analysis
-Analyzes which types of learning activities correlate with higher grades, helping instructors understand what methods work best.
+### 1. Анализ паттернов активности
+Анализирует, какие типы учебной деятельности коррелируют с более высокими оценками, помогая преподавателям понять, какие методы работают лучше всего.
 
-### 2. Student Profiling
-Creates comprehensive profiles including:
-- Total engagement (number of activities)
-- Academic performance (average grade)
-- Learning style diversity
-- Consistency (days active)
-- Engagement level classification
+### 2. Профилирование студентов
+Создает всесторонние профили, включающие:
+- Общую вовлеченность (количество активностей)
+- Академическую успеваемость (средний балл)
+- Разнообразие стиля обучения
+- Стабильность (количество активных дней)
+- Классификацию уровня вовлеченности
 
-### 3. Personalized Recommendations
-Generates activity-specific recommendations:
-- For low-engagement students: Increase participation suggestions
-- For struggling students: Focus on high-effectiveness activities
-- For active learners: Explore diverse activities
+### 3. Персонализированные рекомендации
+Генерирует рекомендации по конкретным активностям:
+- Для студентов с низкой вовлеченностью: Предложения по увеличению участия
+- Для отстающих студентов: Фокус на высокоэффективных активностях
+- Для активных студентов: Изучение разнообразных видов деятельности
 
----
+***
 
-## Performance Characteristics
+## Характеристики производительности
 
-- **Scalability**: Handles 1000+ students and 10000+ activities
-- **Speed**: Analyzes typical dataset in < 1 second
-- **Memory**: Efficient pandas-based implementation
-- **Accuracy**: Robust error handling and data validation
+- **Масштабируемость**: Обрабатывает 1000+ студентов и 10000+ активностей
+- **Скорость**: Анализирует типичный набор данных менее чем за 1 секунду
+- **Память**: Эффективная реализация на базе pandas
+- **Точность**: Надежная обработка ошибок и валидация данных
 
----
+***
 
-## Future Enhancements
+## Планы по развитию
 
-- 📊 Interactive dashboard using Streamlit
-- 🤖 Machine learning-based predictive analytics
-- 📧 Email notifications for at-risk students
-- 🔗 Direct LMS integration (Moodle, Canvas)
-- 📱 Mobile app for student insights
-- 🌐 Multi-language support
+- 📊 Интерактивный дашборд на Streamlit
+- 🤖 Предиктивная аналитика на основе машинного обучения
+- 📧 Email-уведомления для студентов из группы риска
+- 🔗 Прямая интеграция с LMS (Moodle, Canvas)
+- 📱 Мобильное приложение для просмотра инсайтов
+- 🌐 Поддержка мультиязычности
 
----
+***
 
-## Contributing
+## Вклад в проект (Contributing)
 
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/improvement`)
-3. Commit changes (`git commit -am 'Add improvement'`)
-4. Push to branch (`git push origin feature/improvement`)
-5. Submit a Pull Request
+Мы приветствуем ваш вклад! Пожалуйста:
+1. Сделайте форк (Fork) репозитория
+2. Создайте ветку для новой функции (`git checkout -b feature/improvement`)
+3. Закоммитьте изменения (`git commit -am 'Add improvement'`)
+4. Запушьте ветку (`git push origin feature/improvement`)
+5. Создайте Pull Request
 
----
+***
 
-## License
+## Лицензия
 
-MIT License - See LICENSE file for details
+MIT License - См. файл LICENSE для подробностей
 
----
+***
 
-## Author
+## Автор
 
-Developed as a creative educational technology project.
+Разработано как творческий проект в сфере образовательных технологий.
 
-**Contact**: For questions or suggestions, please open an issue on GitHub.
+**Контакты**: Для вопросов или предложений, пожалуйста, откройте issue на GitHub.
 
----
+***
 
-## Acknowledgments
+## Благодарности
 
-- Built with Python scientific stack (NumPy, Pandas, Scikit-learn)
-- Educational analytics best practices incorporated
-- Automated by GitHub Actions for seamless CI/CD
-
----
-
-## Project Statistics
-
-- **Total Code**: 500+ lines of Python
-- **Test Coverage**: 90%+
-- **Documentation**: Comprehensive with examples
-- **CI/CD**: 2 automated workflows
-- **Python Versions**: 3.8, 3.9, 3.10
-- **Dependencies**: 12 packages
-- **Test Cases**: 10 comprehensive tests
+- Создано с использованием научного стека Python (NumPy, Pandas, Scikit-learn)
+- Использованы лучшие практики образовательной аналитики
+- Автоматизировано с помощью GitHub Actions для непрерывного CI/CD
 
 ---
 
-**Happy analyzing! 🎓📊**
+## Статистика проекта
+
+- **Общий объем кода**: 500+ строк Python
+- **Покрытие тестами**: 90%+
+- **Документация**: Исчерпывающая, с примерами
+- **CI/CD**: 2 автоматизированных workflow
+- **Версии Python**: 3.8, 3.9, 3.10
+- **Зависимости**: 12 пакетов
+- **Тест-кейсы**: 10 комплексных тестов
+
+***
+
+**Удачного анализа! 🎓📊**
+
+[1](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/4e7deb03-36f0-49c1-8294-031e195909c1/quick-start.md)
+[2](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/5c1ae608-29dc-4101-b5d6-a1033fb7005f/student-guide.md)
+[3](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/b59d061f-401a-45bc-9239-bd46157a8ec3/evaluation-matrix.md)
+[4](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/6a899256-283d-43d1-bc9d-98f6525e69db/project-ideas.md)
+[5](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/30982fc6-ff41-4d59-9f72-6eaf86704316/rubric-15-points.md)
+[6](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/7dd55376-6c55-4d86-b657-4aed7510a8d4/llm-checker-guide.md)
+[7](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/155653376/df16dc5a-d2a7-43e6-ad67-b7f4d4a19807/README-package.md)
