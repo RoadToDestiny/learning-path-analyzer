@@ -43,11 +43,15 @@ def test_analyzer_initialization(analyzer):
 def test_load_data(analyzer, sample_data):
     """Test loading data."""
     with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False) as f:
-        sample_data.to_csv(f.name, index=False)
-        result = analyzer.load_data(f.name)
+        temp_file = f.name
+        sample_data.to_csv(temp_file, index=False)
+    
+    try:
+        result = analyzer.load_data(temp_file)
         assert result is not None
         assert len(result) == 6
-        Path(f.name).unlink()
+    finally:
+        Path(temp_file).unlink(missing_ok=True)
 
 
 def test_analyze_activity_patterns(analyzer, sample_data):
