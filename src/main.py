@@ -98,6 +98,15 @@ def main():
     export_recommendations(recommendations, str(recs_file))
     print(f"Recommendations saved to {recs_file}")
 
+    # Generate visualizations
+    print("\nGenerating visualizations...")
+    try:
+        visualizations = analyzer.generate_all_visualizations()
+        for viz_name, filepath in visualizations.items():
+            print(f"  ✓ {viz_name}: {filepath}")
+    except Exception as e:
+        print(f"Warning: Could not generate visualizations: {e}")
+
     print("\nAnalysis complete!")
     return 0
 
